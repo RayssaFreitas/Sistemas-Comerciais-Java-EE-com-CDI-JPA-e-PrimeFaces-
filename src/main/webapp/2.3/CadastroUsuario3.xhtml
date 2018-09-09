@@ -8,27 +8,12 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Insert title here</title>
 	
-	<style>
-		.ajax-status{
-			width: 35px;
-			height: 35px;
-			position: fixed;
-			right: 10px;
-			top: 60px
-			
-		}
-	</style>
 </h:head>
 <h:body>
 	<h:form id="frm">
-		<p:ajaxStatus styleClass="ajax-status">
-			<f:facet name="start">
-				<h:graphicImage library="imagens" name="carregando.gif"></h:graphicImage>
-			</f:facet>
-			<f:facet name="complete">
-				<h:outputText value=""/>
-			</f:facet>
-		</p:ajaxStatus>
+		<p:ajaxStatus onstart="$('input').css('background-color', 'yellow')"
+			oncomplete="$('input').css('background-color', '')" />
+		
 	
 		<p:messages autoUpdate="true"/>
 		
