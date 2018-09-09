@@ -4,6 +4,15 @@
 	version="3.0">
 	
 	<display-name>PrimeiroProjetoPrimefaces</display-name>
+	
+	
+	<!-- Nas Requisições ajax, as submissões serão feitas de forma parcial - Com essa configuração não precisa do  partialSubmit="true" no p:ajax do input -->
+	<context-param>
+		<param-name>primefaces.SUBMIT</param-name>
+		<param-value>partial</param-value>
+	</context-param>
+	
+	
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>

@@ -16,7 +16,7 @@
 			<p:outputLabel value="login" for="login"></p:outputLabel>
 		
 				<p:inputText id="login" value="#{cadastroUsuarioBean.login}" required="true">
-					<p:ajax listener="#{cadastroUsuarioBean.verificarDisponibilidadeLogin}" event="change" process="@this"/>
+					<p:ajax listener="#{cadastroUsuarioBean.verificarDisponibilidadeLogin}" event="change" process="@this" partialSubmit="true"/>
 				</p:inputText>
 				
 			
