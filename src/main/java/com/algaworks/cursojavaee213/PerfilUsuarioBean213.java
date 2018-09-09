@@ -1,0 +1,93 @@
+package com.algaworks.cursojavaee213;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
+
+@ManagedBean
+@ViewScoped
+public class PerfilUsuarioBean213 implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	
+
+	
+	private String nome;
+	private String sexo;
+	private String estadoCivil;
+	
+	
+	
+	
+	
+	public void atualizar() {
+		System.out.println("Sexo: " + this.sexo);
+		System.out.println("Estado Civil " + this.estadoCivil);
+		
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Perfil atualizado!"));
+	}
+
+
+	public String getNome() {
+		return nome;
+	}
+
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+	public String getSexo() {
+		return sexo;
+	}
+
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+
+
+	public String getEstadoCivil() {
+		return estadoCivil;
+	}
+
+
+	public void setEstadoCivil(String estadoCivil) {
+		this.estadoCivil = estadoCivil;
+	}
+	
+	
+
+
+	
+	
+	
+	
+	
+
+
+
+	
+	
+
+	
+
+
+	
+
+	
+	
+	
+	
+
+}

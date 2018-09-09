@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Insert title here</title>
+	
+	<style>
+		.cel-radio td{
+			text-align: center;
+		}
+	</style>
+
+
+</h:head>
+<h:body>
+	<h:form id="frm">
+		<p:messages />
+
+		<p:panelGrid columns="2">
+			<p:outputLabel value="Nome" for="nome"></p:outputLabel>
+			<p:inputText id="nome" value="#{perfilUsuarioBean213.nome}"
+				required="true" />
+
+			<p:outputLabel value="Sexo" for="sexo"></p:outputLabel>
+			<p:selectOneRadio id="sexo" value="#{perfilUsuarioBean213.sexo}" required="true" layout="pageDirection">
+				<f:selectItem itemLabel="Masculino" itemValue="M"></f:selectItem>
+				<f:selectItem itemLabel="Feminino" itemValue="F"></f:selectItem>
+			</p:selectOneRadio>
+			
+			<p:outputLabel value="Estado Civil" for="estadoCivil"></p:outputLabel>
+			
+			<h:panelGroup>
+				<p:selectOneRadio id="estadoCivil" value="#{perfilUsuarioBean213.estadoCivil}" required="true" layout="custom">
+					<f:selectItem  itemValue="solteiro"></f:selectItem>
+					<f:selectItem  itemValue="casado"></f:selectItem>
+					<f:selectItem  itemValue="divorciado"></f:selectItem>
+				</p:selectOneRadio>
+			
+				<h:panelGrid columns="3" rowClasses="cel-radio">
+					<p:radioButton id="opt1" for="estadoCivil" itemIndex="0"/>
+					<p:radioButton id="opt2" for="estadoCivil" itemIndex="1"/>
+					<p:radioButton id="opt3" for="estadoCivil" itemIndex="2"/>
+					
+					<p:outputLabel value="Solteiro" for="opt1"></p:outputLabel>
+					<p:outputLabel value="Casado" for="opt2"></p:outputLabel>
+					<p:outputLabel value="Divorciado" for="opt3"></p:outputLabel>
+					
+				</h:panelGrid>
+			</h:panelGroup>
+		</p:panelGrid>
+
+
+		<p:commandButton value="Atualizar"
+			action="#{perfilUsuarioBean213.atualizar}" update="@form" />
+	</h:form>
+</h:body>
+</html>
