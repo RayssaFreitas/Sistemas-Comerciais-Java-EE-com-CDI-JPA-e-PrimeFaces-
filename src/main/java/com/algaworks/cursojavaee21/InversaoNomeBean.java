@@ -1,4 +1,4 @@
-package com.algaworks.cursojavaee;
+package com.algaworks.cursojavaee21;
 
 import java.io.Serializable;
 

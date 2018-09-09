@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Insert title here</title>
+</h:head>
+<h:body>
+	<h:form id="frm">
+		<p:messages autoUpdate="true"/>
+		
+		<p:panelGrid columns="2">
+			<p:outputLabel value="login" for="login"></p:outputLabel>
+			<h:panelGroup>
+				<p:inputText id="login" value="#{cadastroUsuarioBean.login}" required="true"/>
+				<p:commandButton value="verificar disponibilidade" action="#{cadastroUsuarioBean.verificarDisponibilidadeLogin}" process="login @this"></p:commandButton>
+			</h:panelGroup>
+			
+			<p:outputLabel value="Nome" for="nome"></p:outputLabel>
+			<p:inputText id="nome" value="#{cadastroUsuarioBean.nome}" required="true"/>
+		</p:panelGrid>
+		
+		
+		<p:commandButton value="Cadastrar" action="#{cadastroUsuarioBean.cadastrar}"></p:commandButton>
+	</h:form>
+</h:body>
+</html>
