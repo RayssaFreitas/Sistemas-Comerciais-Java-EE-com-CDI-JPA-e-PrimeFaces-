@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Insert title here</title>
+
+
+</h:head>
+<h:body>
+	<h:form id="frm">
+		<p:messages />
+
+		<p:panelGrid columns="2">
+			<p:outputLabel value="Nome" for="nome"></p:outputLabel>
+			<p:inputText id="nome" value="#{perfilUsuarioBean4.nome}"
+				required="true" />
+
+			<p:outputLabel value="Profissão" for="profissao"></p:outputLabel>
+			<p:selectOneListbox id="profissao"
+				value="#{perfilUsuarioBean4.profissao}" required="true">
+				<f:selectItem itemLabel="Estudante" itemValue="1" />
+				<f:selectItem itemLabel="Empresario" itemValue="2" />
+				<f:selectItem itemLabel="Programador" itemValue="3" />
+				<f:selectItem itemLabel="Outras" itemValue="4" />
+			</p:selectOneListbox>
+			
+			<p:outputLabel value="Interesse" for="interesse"></p:outputLabel>
+				<p:selectOneListbox id="interesse" value="#{perfilUsuarioBean4.interesse}" required="true" converter="interesse" var="i" style="width: 200px">
+					<f:selectItems value="#{perfilUsuarioBean4.interesses}" var="interesse" itemLabel="#{interesse.descricao}" itemValue="#{interesse}" />
+					<p:column>
+						<h:graphicImage library="imagens" name="#{i.nomeIcone}.jpg"></h:graphicImage>
+					</p:column>
+					<p:column>
+						<h:outputText value="#{i.descricao}"></h:outputText>
+					</p:column>
+				</p:selectOneListbox>
+
+		</p:panelGrid>
+
+		<p:commandButton value="Atualizar"
+			action="#{perfilUsuarioBean4.atualizar}" update="@form" />
+	</h:form>
+</h:body>
+</html>
