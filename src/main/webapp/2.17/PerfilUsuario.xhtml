@@ -1,0 +1,53 @@
+Skip to content
+ 
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ @RayssaFreitas Sign out
+35
+71 321 algaworks/curso-javaee-primefaces
+ Code  Issues 1  Pull requests 0  Projects 0  Wiki  Insights
+curso-javaee-primefaces/InputMask/src/main/webapp/PerfilUsuario.xhtml
+f0c8b54  on 10 Apr 2013
+@thiagofa thiagofa Projeto de exemplo da aula sobre máscara de entrada com InputMask
+     
+36 lines (29 sloc)  1.25 KB
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
+<h:body>
+
+	<h:form id="frm">
+		<p:messages />
+	
+		<p:panelGrid columns="2">
+			<p:outputLabel value="Nome" for="nome"/>
+			<p:inputText id="nome" required="true" value="#{perfilUsuarioBean217.nome}"/>
+
+			<p:outputLabel value="Telefone" for="telefone" />
+			<p:inputMask id="telefone" value="#{perfilUsuarioBean217.telefone}" 
+				mask="(99) 9999-9999" />
+				
+			<p:outputLabel value="Telefone comercial" for="telefoneComercial" />
+			<p:inputMask id="telefoneComercial" value="#{perfilUsuarioBean217.telefoneComercial}" 
+				mask="(99) 9999-9999? x9999" />
+				
+			<p:outputLabel value="Matrícula" for="matricula" />
+			<p:inputMask id="matricula" value="#{perfilUsuarioBean217.matricula}" 
+				mask="aaa*-9999" placeHolder="X" />
+		</p:panelGrid>
+		
+		<p:commandButton value="Atualizar" action="#{perfilUsuarioBean217.atualizar}" update="@form"/>
+	</h:form>
+
+</h:body>
+</html>
