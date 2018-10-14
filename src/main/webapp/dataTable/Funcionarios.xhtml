@@ -10,19 +10,19 @@
 <h:body>
 
 	<h:form id="frm">
-		<p:dataTable value="#{funcionarioBean.funcionarios}" var="funcionario">
-			<p:column headerText="Matrícula" style="text-align: center" width="90">
+		<p:dataTable value="#{funcionarioBean.funcionarios}" var="funcionario" sortBy="#{funcionario.matricula}" sortOrder="descending">
+			<p:column headerText="Matrícula" style="text-align: center" width="90" sortBy="#{funcionario.matricula}">
 				<h:outputText value="#{funcionario.matricula}" ></h:outputText>
 			</p:column>
-			<p:column headerText="Nome">
+			<p:column headerText="Nome" sortBy="#{funcionario.nome}" >
 				<h:outputText value="#{funcionario.nome}"></h:outputText>
 			</p:column>
-			<p:column headerText="Data Admissao" style="text-align: center" width="180">
+			<p:column headerText="Data Admissao" style="text-align: center" width="180" sortBy="#{funcionario.dataAdmissao}">
 				<h:outputText value="#{funcionario.dataAdmissao}">
 					<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
 				</h:outputText>
 			</p:column>
-			<p:column headerText="Salario" style="text-align: right" width="140">
+			<p:column headerText="Salario" style="text-align: right" width="140" sortBy="#{funcionario.salario}">
 				<h:outputText value="#{funcionario.salario}">
 					<f:convertNumber type="currency" locale="pt_BR"></f:convertNumber>
 				</h:outputText>
