@@ -10,8 +10,8 @@
 <h:body>
 
 	<h:form id="frm">
-		<p:tabView activeIndex="1" orientation="top" effect="fade" effectDuration="slow">
-			<p:tab title="Dados Pessoais" disabled="true">
+		<p:tabView activeIndex="1" orientation="top" effect="fade" effectDuration="slow" dynamic="true" cache="false">
+			<p:tab title="Dados Pessoais" disabled="false">
 				<h:panelGrid columns="2" cellpadding="4">
                     <p:outputLabel value="Nome" for="nome"/>
                     <p:inputText id="nome" size="40" />
@@ -37,6 +37,10 @@
                     <p:outputLabel value="Cidade" for="cidade"/>
                     <p:inputText id="cidade" size="30" />
                 </h:panelGrid>
+                
+                <h:outputText value="#{dataBean.dataAtual}">
+                	<f:convertDateTime pattern="HH:mm:ss"/>
+                </h:outputText>
 			</p:tab>
 		</p:tabView>
 	</h:form>
