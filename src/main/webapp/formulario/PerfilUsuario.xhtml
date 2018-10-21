@@ -7,125 +7,214 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Insert title here</title>
-	
+
 	<script>
-	PrimeFaces.locales['pt'] = {
-	    closeText: 'Fechar',
-	    prevText: 'Anterior',
-	    nextText: 'Próximo',
-	    currentText: 'Começo',
-	    monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
-	    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun', 'Jul','Ago','Set','Out','Nov','Dez'],
-	    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
-	    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],
-	    dayNamesMin: ['D','S','T','Q','Q','S','S'],
-	    weekHeader: 'Semana',
-	    firstDay: 0,
-	    isRTL: false,
-	    showMonthAfterYear: false,
-	    yearSuffix: '',
-	    timeOnlyTitle: 'Só Horas',
-	    timeText: 'Tempo',
-	    hourText: 'Hora',
-	    minuteText: 'Minuto',
-	    secondText: 'Segundo',
-	    ampm: false,
-	    month: 'Mês',
-	    week: 'Semana',
-	    day: 'Dia',
-	    allDayText : 'Todo o Dia'
-	};
+		PrimeFaces.locales['pt'] = {
+			closeText : 'Fechar',
+			prevText : 'Anterior',
+			nextText : 'Próximo',
+			currentText : 'Começo',
+			monthNames : [ 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio',
+					'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro',
+					'Novembro', 'Dezembro' ],
+			monthNamesShort : [ 'Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun',
+					'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez' ],
+			dayNames : [ 'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta',
+					'Sexta', 'Sábado' ],
+			dayNamesShort : [ 'Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb' ],
+			dayNamesMin : [ 'D', 'S', 'T', 'Q', 'Q', 'S', 'S' ],
+			weekHeader : 'Semana',
+			firstDay : 0,
+			isRTL : false,
+			showMonthAfterYear : false,
+			yearSuffix : '',
+			timeOnlyTitle : 'Só Horas',
+			timeText : 'Tempo',
+			hourText : 'Hora',
+			minuteText : 'Minuto',
+			secondText : 'Segundo',
+			ampm : false,
+			month : 'Mês',
+			week : 'Semana',
+			day : 'Dia',
+			allDayText : 'Todo o Dia'
+		};
 	</script>
-	
-	
+
+
 	<style>
-		.cel-radio td{
-			text-align: center;
-		}
-	</style>
+.cel-radio td {
+	text-align: center;
+}
+</style>
 
 </h:head>
 <h:body>
 	<h:form id="frm">
 		<p:messages />
-		
-		<p:panel style="width:600px">
-		<h2>Cadastro de contrato de treinamentos</h2>
-		<hr />
 
-		<p:panelGrid columns="2" style="border:none">
-			<p:outputLabel value="Razão Social" for="razaoSocial"></p:outputLabel>
-			<p:inputText id="razaoSocial" value="#{formularioBean.razaoSocial}"
-				required="true" />
-				
-			<p:outputLabel value="CNPJ" for="cnpj"></p:outputLabel>
-			<p:inputMask id="cnpj" value="#{formularioBean.cnpj}"
-				required="true" mask="99.999.999/9999-99" />
-				
-				<p:outputLabel value="Cidade do Contrato" for="cidadeContrato"></p:outputLabel>
-				<p:autoComplete id="cidadeContrato" value="#{formularioBean.cidadeContrato}"
-				required="true" completeMethod="#{formularioBean.sugerirCidades}" forceSelection="true" minQueryLength="1" dropdown="true" />
+		<p:panel style="width:600px;margin:margin: 0 0 5px;">
+			<h3>Cadastro de contrato de treinamentos</h3>
+			<hr />
 
-			<p:outputLabel value="Modalidade" for="modalidade"></p:outputLabel>
-			<h:panelGroup>
-				<p:selectOneRadio id="modalidade" value="#{formularioBean.modalidade}" required="true" layout="custom">
-					<f:selectItem  itemValue="EAD"></f:selectItem>
-					<f:selectItem  itemValue="Presencial"></f:selectItem>
-				</p:selectOneRadio>
-			
-				<h:panelGrid columns="4" rowClasses="cel-radio">
-					<p:radioButton id="opt1" for="modalidade" itemIndex="0"/>
-					<p:outputLabel value="EAD" for="opt1"></p:outputLabel>
-					<p:radioButton id="opt2" for="modalidade" itemIndex="1"/>
-					<p:outputLabel value="Presencial" for="opt2"></p:outputLabel>
-					
-				</h:panelGrid>
-			</h:panelGroup>
-			
-			
-			<p:outputLabel value="Data de contrato" for="dataContrato"></p:outputLabel>
-			<p:calendar id="dataContrato" required="true"
-				value="#{formularioBean.dataContrato}"
-				pattern="dd/MM/yyyy" readonlyInput="true" navigator="true"
-				pages="3" mode="popup"
-				maxdate="#{formularioBean.dataHoje}" locale="pt" />
-				
-			<p:outputLabel value="Valor do Contrato" for="valorContrato"></p:outputLabel>
-			<p:inputText id="valorContrato" value="#{formularioBean.valor}"
-				required="true" />
-				
-			<p:outputLabel value="Profissão" for="profissao"></p:outputLabel>
-			<p:selectOneMenu id="profissao" value="#{formularioBean.metodoPagamento}" required="true">
-				<f:selectItem itemLabel="Cartão de Crédito" itemValue="1" />
-				<f:selectItem itemLabel="Cheque" itemValue="2" />
-				<f:selectItem itemLabel="Boleto" itemValue="3" />
-				<p:ajax event="change" process="@this" update="formaPagamento" listener="#{formularioBean.formasPagamento}"/>
-			</p:selectOneMenu>
-			
-			<p:outputLabel value="Forma de Pagamento" for="formaPagamento"></p:outputLabel>
-			<p:selectOneMenu id="formaPagamento"  value="#{formularioBean.formaPagamento}" required="true"  >
-				<f:selectItem itemLabel="Selecione" itemValue="" noSelectionOption="true"></f:selectItem> 
-				<f:selectItems value="#{formularioBean.formasDePagamento}" var="formaPagamento" itemLabel="#{formaPagamento}" itemValue="#{formaPagamento}"></f:selectItems>
-			</p:selectOneMenu>
-			
-			<p:outputLabel value="Cursos contratados" for="interesses"></p:outputLabel>
-			<p:selectManyCheckbox id="interesses" value="#{formularioBean.interesses}" required="true" layout="pageDirection">
-				<f:selectItem itemLabel="Fundamentos Java e Orientação a Objetos" itemValue="1" />
-				<f:selectItem itemLabel="Desenvolvimento WEB com JSF 2" itemValue="2" />
-				<f:selectItem itemLabel="Persistência de Dados com JPA 2 e Hibernate" itemValue="3" />
-				<f:selectItem itemLabel="Gerenciamento Ágil de Projetos com Scrum" itemValue="4" />
-			</p:selectManyCheckbox>
 
-		</p:panelGrid>
 
-	<br />
+			<p:tabView activeIndex="1" orientation="top" effect="fade"
+				effectDuration="slow" dynamic="true" cache="true">
+				<p:tab title="Dados Principais" disabled="false">
+					<p:panelGrid columns="2" style="border:none">
 
-		<p:commandButton value="Atualizar"
-			action="#{formularioBean.atualizar}" update="@form" />
+						<p:outputLabel value="Razão Social" for="razaoSocial"></p:outputLabel>
+						<p:inputText id="razaoSocial"
+							value="#{formularioBean.contratoCurso.razaoSocial}"
+							required="true" />
+
+						<p:outputLabel value="CNPJ" for="cnpj"></p:outputLabel>
+						<p:inputMask id="cnpj"
+							value="#{formularioBean.contratoCurso.cnpj}" required="true"
+							mask="99.999.999/9999-99" />
+
+						<p:outputLabel value="Cidade do Contrato" for="cidadeContrato"></p:outputLabel>
+						<p:autoComplete id="cidadeContrato"
+							value="#{formularioBean.contratoCurso.cidadeContrato}"
+							required="true" completeMethod="#{formularioBean.sugerirCidades}"
+							forceSelection="true" minQueryLength="1" dropdown="true" />
+
+						<p:outputLabel value="Modalidade" for="modalidade"></p:outputLabel>
+						<h:panelGroup>
+							<p:selectOneRadio id="modalidade"
+								value="#{formularioBean.contratoCurso.modalidade}"
+								required="true" layout="custom">
+								<f:selectItem itemValue="EAD"></f:selectItem>
+								<f:selectItem itemValue="Presencial"></f:selectItem>
+							</p:selectOneRadio>
+
+							<h:panelGrid columns="4" rowClasses="cel-radio">
+								<p:radioButton id="opt1" for="modalidade" itemIndex="0" />
+								<p:outputLabel value="EAD" for="opt1"></p:outputLabel>
+								<p:radioButton id="opt2" for="modalidade" itemIndex="1" />
+								<p:outputLabel value="Presencial" for="opt2"></p:outputLabel>
+
+							</h:panelGrid>
+						</h:panelGroup>
+
+					</p:panelGrid>
+				</p:tab>
+
+				<p:tab title="Contrato" disabled="false">
+					<p:panelGrid columns="2" style="border:none">
+						<p:outputLabel value="Data de contrato" for="dataContrato"></p:outputLabel>
+						<p:calendar id="dataContrato" required="true"
+							value="#{formularioBean.contratoCurso.dataContrato}"
+							pattern="dd/MM/yyyy" readonlyInput="true" navigator="true"
+							pages="3" mode="popup" maxdate="#{formularioBean.dataHoje}"
+							locale="pt" />
+
+						<p:outputLabel value="Valor do Contrato" for="valorContrato"></p:outputLabel>
+						<p:inputText id="valorContrato"
+							value="#{formularioBean.contratoCurso.valorDoContrato}"
+							required="true" />
+
+						<p:outputLabel value="Profissão" for="profissao"></p:outputLabel>
+						<p:selectOneMenu id="profissao"
+							value="#{formularioBean.contratoCurso.metodoPagamento}"
+							required="true">
+							<f:selectItem itemLabel="Cartão de Crédito" itemValue="1" />
+							<f:selectItem itemLabel="Cheque" itemValue="2" />
+							<f:selectItem itemLabel="Boleto" itemValue="3" />
+							<p:ajax event="change" process="@this" update="formaPagamento"
+								listener="#{formularioBean.formasPagamento}" />
+						</p:selectOneMenu>
+
+						<p:outputLabel value="Forma de Pagamento" for="formaPagamento"></p:outputLabel>
+						<p:selectOneMenu id="formaPagamento"
+							value="#{formularioBean.contratoCurso.formaPagamento}"
+							required="true">
+							<f:selectItem itemLabel="Selecione" itemValue=""
+								noSelectionOption="true"></f:selectItem>
+							<f:selectItems value="#{formularioBean.formasDePagamento}"
+								var="formaPagamento" itemLabel="#{formaPagamento}"
+								itemValue="#{formaPagamento}"></f:selectItems>
+						</p:selectOneMenu>
+
+					</p:panelGrid>
+				</p:tab>
+
+				<p:tab title="Cursos" disabled="false">
+					<p:panelGrid columns="2" style="border:none">
+						<p:selectManyCheckbox id="interesses"
+							value="#{formularioBean.interesses}" required="true"
+							layout="pageDirection">
+							<f:selectItem itemLabel="Fundamentos Java e Orientação a Objetos"
+								itemValue="1" />
+							<f:selectItem itemLabel="Desenvolvimento WEB com JSF 2"
+								itemValue="2" />
+							<f:selectItem
+								itemLabel="Persistência de Dados com JPA 2 e Hibernate"
+								itemValue="3" />
+							<f:selectItem
+								itemLabel="Gerenciamento Ágil de Projetos com Scrum"
+								itemValue="4" />
+						</p:selectManyCheckbox>
+					</p:panelGrid>
+				</p:tab>
+
+			</p:tabView>
+
+			<br />
+
+				<p:commandButton value="Atualizar"
+					action="#{formularioBean.atualizar}" update="tavle" />
 			
-			</p:panel>
+		</p:panel>
+
+		<p:panel id="tavle" style="margin-top:50px">
+			<p:dataTable value="#{formularioBean.contratosCursos}" var="contrato"
+				rows="10" paginator="true" paginatorPosition="bottom"
+				rowsPerPageTemplate="10, 20, 30" paginatorAlwaysVisible="false">
+				<p:column headerText="Razão Social">
+					<h:outputText value="#{contrato.razaoSocial}"></h:outputText>
+				</p:column>
+
+				<p:column headerText="CNPJ" style="text-align: center" width="180">
+					<h:outputText value="#{contrato.cnpj}"></h:outputText>
+				</p:column>
+
+				<p:column headerText="Cidade Contrato" style="text-align: center"
+					width="140">
+					<h:outputText value="#{contrato.cidadeContrato}"></h:outputText>
+				</p:column>
+
+				<p:column headerText="Modalidade" style="text-align: center"
+					width="90">
+					<h:outputText value="#{contrato.modalidade}"></h:outputText>
+				</p:column>
+
+				<p:column headerText="Data Contrato" style="text-align: center"
+					width="90">
+					<h:outputText value="#{contrato.dataContrato}">
+						<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+					</h:outputText>
+				</p:column>
+
+				<p:column headerText="Método de Pagamento"
+					style="text-align: center" width="90">
+					<h:outputText value="#{contrato.metodoPagamento}"></h:outputText>
+				</p:column>
+
+				<p:column headerText="Forma de Pagamento" style="text-align: center"
+					width="90">
+					<h:outputText value="#{contrato.formaPagamento}"></h:outputText>
+				</p:column>
+
+				<p:column headerText="Valor Contrato" style="text-align: right"
+					width="140">
+					<h:outputText value="#{contrato.valorDoContrato}">
+						<f:convertNumber type="currency" locale="pt_BR"></f:convertNumber>
+					</h:outputText>
+				</p:column>
+			</p:dataTable>
+		</p:panel>
 	</h:form>
-	
-	
 </h:body>
 </html>

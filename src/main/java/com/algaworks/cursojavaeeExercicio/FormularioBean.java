@@ -1,6 +1,7 @@
 package com.algaworks.cursojavaeeExercicio;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,21 +18,19 @@ public class FormularioBean implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	private String razaoSocial;
-	private String cnpj;
-	private String cidadeContrato;
-	private Date dataContrato;
-	private String modalidade;
-	private Double valor;
-	private int metodoPagamento;
-	private String formaPagamento;
+	private static final long serialVersionUID = -7382004971074349542L;
 	private List<String> cidades = new ArrayList<String>();
 	private List<String> formasDePagamento = new ArrayList<String>();
 	private List<String> interesses;
 	
+	private List<ContratoCurso> contratosCursos = new ArrayList<ContratoCurso>();
+	private ContratoCurso contratoCurso = new ContratoCurso();
 	
 	public FormularioBean() {
+		carregaCidades();
+	}
+	
+	public void carregaCidades() {
 		cidades.add("Alemanha");
 		cidades.add("Argélia");
 		cidades.add("Argentina");
@@ -54,59 +53,7 @@ public class FormularioBean implements Serializable{
 		return cidadesSugeridos;
 	}
 	
-	
-	public String getRazaoSocial() {
-		return razaoSocial;
-	}
-	public void setRazaoSocial(String razaoSocial) {
-		this.razaoSocial = razaoSocial;
-	}
-	public String getCnpj() {
-		return cnpj;
-	}
-	public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
-	}
-	public String getCidadeContrato() {
-		return cidadeContrato;
-	}
-	public void setCidadeContrato(String cidadeContrato) {
-		this.cidadeContrato = cidadeContrato;
-	}
-	public String getModalidade() {
-		return modalidade;
-	}
-	public void setModalidade(String modalidade) {
-		this.modalidade = modalidade;
-	}
-	public Double getValor() {
-		return valor;
-	}
-	public void setValor(Double valor) {
-		this.valor = valor;
-	}
-	
-	public int getMetodoPagamento() {
-		return metodoPagamento;
-	}
 
-	public void setMetodoPagamento(int metodoPagamento) {
-		this.metodoPagamento = metodoPagamento;
-	}
-
-	public String getFormaPagamento() {
-		return formaPagamento;
-	}
-	public void setFormaPagamento(String formaPagamento) {
-		this.formaPagamento = formaPagamento;
-	}
-	
-	public Date getDataContrato() {
-		return dataContrato;
-	}
-	public void setDataContrato(Date dataContrato) {
-		this.dataContrato = dataContrato;
-	}
 	public Date  getDataHoje() {
 		return new Date();
 	}
@@ -135,29 +82,30 @@ public class FormularioBean implements Serializable{
 	}
 
 	public void atualizar() {
-		System.out.println("Data de Nascimento: " + this.dataContrato);
-		
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Perfil atualizado!"));
-		System.out.println("Razão social " + razaoSocial);
-		System.out.println("CNPJl " + cnpj);
-		System.out.println("Cidade " + cidadeContrato);
-		System.out.println("Modalidade " + modalidade);
-		System.out.println("Data COntrato " + dataContrato);
-		System.out.println("Modalidade " + modalidade);
-		System.out.println("Valor COntrato " + valor);
-		System.out.println("Método de Pagamento " + metodoPagamento);
-		System.out.println("Forma de Pagamento " + formaPagamento);
-		System.out.println("Interesses:");
-		for(String interesse: interesses) {
-			System.out.println(interesse);
-		}
-		
+		contratosCursos.add(contratoCurso);
+		contratoCurso = new ContratoCurso();
 	}
 	
+	public List<ContratoCurso> getContratosCursos() {
+		return contratosCursos;
+	}
+
+	public void setContratosCursos(List<ContratoCurso> contratosCursos) {
+		this.contratosCursos = contratosCursos;
+	}
+
+	public ContratoCurso getContratoCurso() {
+		return contratoCurso;
+	}
+
+	public void setContratoCurso(ContratoCurso contratoCurso) {
+		this.contratoCurso = contratoCurso;
+	}
+
 	public void formasPagamento() {
 		formasDePagamento.clear();
 		
-		switch (metodoPagamento) {
+		switch (contratoCurso.getMetodoPagamento()) {
 		case 1:
 			formasDePagamento.add("À vista");
 			formasDePagamento.add("1X");
@@ -178,9 +126,5 @@ public class FormularioBean implements Serializable{
 			break;
 		}
 	}
-
-	
-	
-	
 
 }
